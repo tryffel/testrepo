@@ -9,14 +9,14 @@ platform:
 
 steps:
 - name: tests
-  image: golang
+  image: golang:1.13
   volumes:
   - name: deps
     path: /go
   commands:
-  - go mod download
-  - go test ./...
-  - go build .
+    - go mod download
+    - go test ./...
+    - go build .
 
 ---
 kind: pipeline
@@ -28,14 +28,14 @@ platform:
 
 steps:
 - name: tests
-  image: golang
+  image: golang:1.13
   volumes:
   - name: deps
     path: /go
   commands:
-  - go mod download
-  - go test ./...
-  - go build .
+    - go mod download
+    - go test ./...
+    - go build .
 
 ---
 kind: pipeline
@@ -46,12 +46,8 @@ platform:
   arch: am64
 
 steps:
-- name: fetch
-  image: docker:git
-  commands:
-    - git fetch --tags
 - name: tests
-  image: golang
+  image: golang:1.13
   volumes:
   - name: deps
     path: /go
@@ -86,6 +82,10 @@ steps:
     - curl -sL https://git.io/goreleaser | bash
   when:
     event: tag
+  depends_on: 
+    - testing-linux-amd64
+    - testing-linux-arm64
+    - testing-windows-amd64
 
 trigger:
   event:
