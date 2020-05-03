@@ -32,6 +32,7 @@ trigger:
     include:
     - push
     - pull_request
+    - tag
 
 volumes:
 - name: deps
