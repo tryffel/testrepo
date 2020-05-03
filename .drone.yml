@@ -5,6 +5,7 @@ name: testing-windows-amd64
 platform:
   os: windows
   arch: am64
+  version: 1903
 
 steps:
 - name: tests
@@ -25,6 +26,7 @@ platform:
   os: linux
   arch: arm64
 
+steps:
 - name: tests
   image: golang
   volumes:
@@ -95,4 +97,4 @@ trigger:
 volumes:
 - name: deps
   temp: {}
-
+gg
