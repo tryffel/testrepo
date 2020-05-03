@@ -39,5 +39,5 @@ changelog:
 
 release:
   draft: true
-  pre-release: auto
+  prerelease: auto
 
