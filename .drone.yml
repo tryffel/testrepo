@@ -1,3 +1,4 @@
+---
 kind: pipeline
 name: testing-windows-amd64
 
@@ -16,6 +17,7 @@ steps:
   - go test ./...
   - go build .
 
+---
 kind: pipeline
 name: testing-linux-arm64
 
@@ -33,7 +35,7 @@ platform:
   - go test ./...
   - go build .
 
-
+---
 kind: pipeline
 name: testing-linux-amd64
 
@@ -56,6 +58,7 @@ steps:
   - go test ./...
   - go build .
 
+---
 kind: pipeline
 name: release
 
