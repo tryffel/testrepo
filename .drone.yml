@@ -4,7 +4,7 @@ name: testing-windows-amd64
 
 platform:
   os: windows
-  arch: am64
+  arch: amd64
   version: 1903
 
 steps:
@@ -68,7 +68,7 @@ name: testing-linux-amd64
 
 platform:
   os: linux
-  arch: am64
+  arch: amd64
 
 steps:
 - name: tests
@@ -99,7 +99,7 @@ name: release
 
 platform:
   os: linux
-  arch: am64
+  arch: amd64
 
 trigger:
   event:
