@@ -1,5 +1,45 @@
 kind: pipeline
-name: default
+name: testing-windows-amd64
+
+platform:
+  os: windows
+  arch: am64
+
+steps:
+- name: tests
+  image: golang
+  volumes:
+  - name: deps
+    path: /go
+  commands:
+  - go mod download
+  - go test ./...
+  - go build .
+
+kind: pipeline
+name: testing-linux-arm64
+
+platform: 
+  os: linux
+  arch: arm64
+
+- name: tests
+  image: golang
+  volumes:
+  - name: deps
+    path: /go
+  commands:
+  - go mod download
+  - go test ./...
+  - go build .
+
+
+kind: pipeline
+name: testing-linux-amd64
+
+platform:
+  os: linux
+  arch: am64
 
 steps:
 - name: fetch
@@ -14,6 +54,21 @@ steps:
   commands:
   - go mod download
   - go test ./...
+  - go build .
+
+kind: pipeline
+name: release
+
+platform:
+  os: linux
+  arch: am64
+
+steps:
+- name: fetch
+  image: docker:git
+  commands:
+    - git fetch --tags
+
 - name: release
   image: golang
   environment:
