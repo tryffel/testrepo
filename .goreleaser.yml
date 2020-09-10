@@ -22,9 +22,12 @@ archives:
     replacements:
       linux: Linux
       windows: Windows
+      amd64: x86_64
     format_overrides:
     - goos: windows
-      format: zip
+      format: binary
+    - goos: linux
+      format: binary
 checksum:
   name_template: 'checksums.txt'
 snapshot:
