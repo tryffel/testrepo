@@ -50,7 +50,7 @@ steps:
     - git fetch --tags
 
 - name: release
-  image: tryffel/golang-alsa:1.15.5
+  image: x1unix/go-mingw:1.16
   environment:
     GITHUB_TOKEN:
       from_secret: github_token
